@@ -1,0 +1,17 @@
+﻿<template>
+    <require from="components/card"></require>
+
+    Welcome to the exercises page
+    <div>
+        <card repeat.for="section of sections"
+              title="${section.name}"
+              description="${section.description}">
+        </card>
+    </div>
+    <div repeat.for="exercise of exercises">
+        <a href.bind="getlink(exercise)">
+            <p>${exercise.name}</p>
+            <p>${exercise.exerciseQuestions.length} questions</p>
+        </a>
+    </div>
+</template>

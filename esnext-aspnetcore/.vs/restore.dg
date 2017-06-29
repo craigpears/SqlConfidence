@@ -1,0 +1,10 @@
+#:C:\SqlConfidence\esnext-aspnetcore\src\DataAccess\DataAccess.xproj
+#:C:\SqlConfidence\esnext-aspnetcore\src\skeleton\skeleton.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\skeleton\skeleton.xproj|C:\SqlConfidence\esnext-aspnetcore\src\DataAccess\DataAccess.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\skeleton\skeleton.xproj|C:\SqlConfidence\esnext-aspnetcore\src\EntityServices\EntityServices.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\skeleton\skeleton.xproj|C:\SqlConfidence\esnext-aspnetcore\src\Services\Services.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\skeleton\skeleton.xproj|C:\SqlConfidence\esnext-aspnetcore\src\ViewModels\ViewModels.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\EntityServices\EntityServices.xproj|C:\SqlConfidence\esnext-aspnetcore\src\DataAccess\DataAccess.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\Services\Services.xproj|C:\SqlConfidence\esnext-aspnetcore\src\ViewModels\ViewModels.xproj
+#:C:\SqlConfidence\esnext-aspnetcore\src\EntityServices\EntityServices.xproj
+C:\SqlConfidence\esnext-aspnetcore\src\EntityServices\EntityServices.xproj|C:\SqlConfidence\esnext-aspnetcore\src\DataAccess\DataAccess.xproj

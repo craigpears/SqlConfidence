@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    <link href="~/build/app_built/styles.css" rel="stylesheet" />
+    <script src="~/build/app_built/scripts.js"></script>
+    @RenderSection("JavascriptInHead", required: false)
+    <meta name="google-site-verification" content="XszWVNrt8u4wYK6EozZvtSFsBSgEdeJ2ugDe0HQbu_g" />
+</head>
+<body>
+    <header>        
+        <nav>
+            <div class="row">                    
+                <div class="large-4 column">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Exercises", "Index", "Exercise")
+                    @if (ViewBag.User != null && ViewBag.User.IsAdmin) { @Html.ActionLink("Admin", "Index", "Admin") }
+                </div>
+                <div class="large-4 columns"><div id="logo">SQL CONFIDENCE</div></div>
+                
+                <div class="large-4 columns" style="text-align:right">
+                  
+                @if (ViewBag.User.IsGuest == true)
+                {
+                    @Html.ActionLink("Login", "Login", "Login")
+                    @Html.ActionLink("Register", "Register", "Login")
+                }
+                else
+                {
+                    <span>Logged in as @ViewBag.User.Email</span>
+                    @Html.ActionLink("Log Out", "Logout", "Login")
+                }      
+                    
+                <script>
+                    sqlConfidenceApp.factory('bootstrappedUserData', function () {
+                        return {
+                            user: @Html.Raw(Json.Encode(@ViewBag.User))
+                        };
+                    });
+                </script>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="success_bar">
+        <div class="row">
+            <div class="large-12 columns" id="success_message">Success!</div>
+        </div>
+    </div>
+    <div id="error_bar">
+        <div class="row">
+            <div class="large-12 columns" id="error_message">Error!</div>
+        </div>
+    </div>
+    @if(!String.IsNullOrEmpty(ViewBag.SuccessMessage))
+    {
+        <script>
+            ShowSuccessMessage('@ViewBag.SuccessMessage');
+        </script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <script>
+            ShowErrorMessage('@ViewBag.ErrorMessage');
+        </script>
+    }
+    <section id="body-wrapper">
+        @RenderBody()
+    </section>
+
+    <footer>        
+        <div class="row">
+            <div class="large-12 columns">@Html.ActionLink("About", "About", "Home")</div>
+            <div class="large-12 columns">@Html.ActionLink("Terms and Conditions", "TermsAndConditions", "Home")</div>
+            <div class="large-12 columns">@Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Home")</div>
+        </div>
+    </footer>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-48794880-1', 'sqlconfidence.com');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

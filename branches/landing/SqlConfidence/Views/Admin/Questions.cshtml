@@ -1,0 +1,27 @@
+﻿@model Common.Models.ExerciseModel
+@using Common.Models
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>QuestionId</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (QuestionModel question in Model.Questions)
+        {
+            <tr id="question_@question.QuestionId" data-order="@question.Order" data-exercise-id="@question.QuestionId">
+                <td><a class="button" href="/Admin/Question?ExerciseQuestionId=@question.QuestionId">Edit</a></td>
+                <td>@question.QuestionId</td>
+                <td>@question.Description</td>
+                <td>                                        
+                    @if(@question.Order > 0) { <button type="button" onclick="MoveQuestionUp(@question.QuestionId)">Up</button> }
+                    @if (@question.Order < Model.Questions.Count() - 1) {<button type="button" onclick="MoveQuestionDown(@question.QuestionId)">Down</button> }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "AskAQuestion";
+}
+
+
+<div class="row">
+    <div class="columns large-3">&nbsp;</div>
+    <div class="container columns large-6 end">
+    <h2>Ask A Question</h2>
+        <div class="containerBody textContainer">
+            @using (Html.BeginForm("AskAQuestion", "Home", FormMethod.Post, new { id = "ask-a-question-form" }))
+            {
+                
+                if (ViewBag.ErrorMessage != "")
+                {
+                    <p data-alert class="alert-box alert radius">@ViewBag.ErrorMessage</p>
+                }
+                else if(ViewBag.UserEmail != "")
+                {
+                    <p data-alert class="alert-box success radius">Your message has been sent successfully</p>
+                }
+                else 
+                {
+                    <p>Do you have a question, suggestion or inquiry for SQL Confidence? Please use this form and we'll get back to you soon.  Thanks for your interest!</p>
+                }
+                <input name="UserEmail"placeholder="Email" value="@ViewBag.UserEmail"/>
+                <textarea name="Question" placeholder="Write your questions, comments or inquiries to us here.">@ViewBag.Question</textarea>
+                <a class="button call-to-action wide-button" onclick="SubmitForm('ask-a-question-form')">Send</a>
+            }
+         </div>
+    </div>
+</div>

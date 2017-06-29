@@ -1,0 +1,107 @@
+﻿@model Common.Models.DataDifferencesModel
+@using Common.Models
+@using Common.Enums
+@using System.Data
+
+@if(Model.Differences.Count > 0)
+{
+    if(Model.Differences.Where(x => x.DifferenceType == DataDifferenceType.WrongOrder).Count() == Model.Differences.Count)
+    {
+        <p>All of your data looks correct, but there are @Model.Differences.Count rows in the wrong order.  Did you miss an order by clause?</p>
+    }
+    else
+    {
+        <table>
+            @foreach (DataDifferenceModel difference in Model.Differences)
+            {
+                switch (difference.DifferenceType)
+                {
+                    case DataDifferenceType.RowCountDifferent:
+                        <tr><td>The row count was different.  User count = @Model.UserDataRowCount.  Answer count = @Model.AnswerDataRowCount.</td></tr>
+                        break;
+                    case DataDifferenceType.ColumnCountDifferent:
+                        <tr><td>The column count was different.  User count = @Model.UserDataColumnCount.  Answer Count = @Model.AnswerDataColumnCount</td></tr>
+                        break;
+                    case DataDifferenceType.ColumnMismatch:
+                        <tr><td>Column mismatch found.  User column = @difference.UserQueryColumn.  Answer column = @difference.AnswerQueryColumn.  Column Position = @(difference.ColumnDifferencePosition + 1).</td></tr>
+                        break;
+                }
+            }
+        </table>
+        if (Model.Differences.Any(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound || x.DifferenceType == DataDifferenceType.NotFound))
+        {
+            <p>
+                There were @Model.Differences.Where(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound || x.DifferenceType == DataDifferenceType.NotFound).Count() rows in your query that weren't found in the answer.
+                @if(Model.Differences.Any(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound))
+                {
+                    <text>@Model.Differences.Where(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound).Count() of these rows have similar looking rows in the answer.</text>
+                }
+            </p>
+
+            var exampleDifference = @Model.Differences.First(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound || x.DifferenceType == DataDifferenceType.NotFound);
+
+            <div class="row">
+                <div class="columns large-6">
+                    <h2>Your Query</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Row Number</th>
+                                @foreach (DataColumn column in exampleDifference.UserQueryRow.Table.Columns)
+                                {
+                                    <th>@column.ColumnName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataDifferenceModel difference in @Model.Differences.Where(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound || x.DifferenceType == DataDifferenceType.NotFound))
+                            {
+                                <tr>
+                                    <td>@difference.UserQueryPosition</td>
+                                    @foreach (var item in difference.UserQueryRow.ItemArray)
+                                    {
+                                        <td>@item</td>
+                                    }
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="columns large-6">
+                    <h2>Answer Query (similar row)</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Row Number</th>
+                                @foreach (DataColumn column in exampleDifference.UserQueryRow.Table.Columns)
+                                {
+                                    <th>@column.ColumnName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataDifferenceModel difference in @Model.Differences.Where(x => x.DifferenceType == DataDifferenceType.SimilarMatchFound || x.DifferenceType == DataDifferenceType.NotFound))
+                            {
+                                <tr>
+                                    @if (difference.DifferenceType == DataDifferenceType.NotFound)
+                                    {
+                                        <td colspan="@(exampleDifference.UserQueryRow.Table.Columns.Count + 1)">No similar row was found.</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@difference.AnswerQueryPosition</td>
+                                        foreach (var item in difference.AnswerQueryRow.ItemArray)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    }
+}

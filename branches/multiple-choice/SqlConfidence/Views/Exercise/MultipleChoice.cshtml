@@ -1,0 +1,52 @@
+﻿@model string
+@using System.Data
+@using Common.Models
+@{
+    ViewBag.Title = "Exercise";
+    ViewBag.DarkSkin = true;
+}
+
+@section JavascriptInHead
+{
+    <script src="~/Scripts/Exercises/MultipleChoiceCtrl.js"></script>
+    <script src="~/Scripts/Exercises/QuestionsFilters.js"></script>
+    <script src="~/Scripts/Exercises/ResponseParser.js"></script>
+    <script src="~/Scripts/Exercises/QueryResultsView/QueryResultsViewDirective.js"></script>
+    <script src="~/Scripts/Exercises/JsonDeserializer.js"></script>
+
+    <script>
+        var ExerciseId = @Request.QueryString["ExerciseId"];
+        $(document).ready(function () {
+            correctAnswers = 0;
+            $(document).foundation();
+        });
+    </script>
+}
+<div ng-controller="MultipleChoiceCtrl as ctrl" ng-app="sqlConfidenceApp" class="multiple-choice-page">
+    <div class="row">
+        <div class="large-8 large-offset-2 columns">
+            <div class="container">
+                <h2>{{exercise.Name}}</h2>
+                <div class="containerBody" id="Query">
+                    <h2>{{GetInstructionsTitle()}}</h2>
+                    <div ng-bind-html="currentQuestion.InstructionsTemplate"></div>
+                    <div id="referenceData">
+                        <div ng-repeat="collection in headers">
+                            <query-results-view headers="headers[$index]" rows="rows[$index]"></query-results-view>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="multiple-choice-option" ng-repeat="choice in currentQuestion.Options" ng-click="CheckAnswerMultipleChoice(choice.Description, currentQuestion.ExerciseQuestionId)">
+                            {{choice.Description}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="NextQuestionContainer" ng-show="currentQuestion.Answered">
+                <div class="containerBody">
+                    <a class="button call-to-action" ng-click="NextQuestion()">Next Question</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

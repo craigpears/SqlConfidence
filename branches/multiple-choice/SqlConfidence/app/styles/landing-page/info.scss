@@ -1,0 +1,47 @@
+.lp-index {
+    .fun-text-hover {
+      background-image: -webkit-linear-gradient(left, transparent 50%, #cceaef 50%);
+      background-image: linear-gradient(to right, transparent 50%, #cceaef 50%);
+      background-position: 0;
+      background-size: 200%;
+      -webkit-transition: all 0.4s;
+      transition: all 0.4s;
+    }
+    .fun-text-hover:hover {
+      background-position: -100%;
+    }
+    a:link.external {
+        text-decoration: none;
+        color: $outrageous-orange;
+        font-size: 300%;
+        font-weight:800;
+        cursor: pointer;
+    }
+    .info-ex{
+        background-color: white;
+        text-align:center;
+        font-size:300%;
+        padding:10px;
+    }
+    .flex-video {
+        padding-right: 0px;
+    }
+    .text-center-small {
+        background-color: white;
+        text-align:left;
+        margin-right:75px;
+        padding: 70px 0;
+    }
+    .text-center-small-l {
+        background-color: white;
+        text-align:left;
+        margin-left:75px;
+        padding: 70px 0;
+    }
+    .manifesto {
+        display: block;
+        margin: auto;
+        padding:10px;
+        width:800;
+    }
+}

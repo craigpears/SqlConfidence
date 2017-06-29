@@ -1,0 +1,21 @@
+﻿.exerciseProgress {
+    font-weight: bold;
+}
+
+.exerciseContainer {
+    position: relative;
+    font-size: 130%;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.exerciseContainer:hover {
+    background-color: #aedde6;
+}
+
+.exerciseSummary {
+    font-size: 130%;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}

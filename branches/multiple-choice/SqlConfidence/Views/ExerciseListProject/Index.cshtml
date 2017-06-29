@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section JavascriptInHead
+{
+    <script src="~/Scripts/ExerciseListProjectCtrl.js"></script>
+    <script src="~/Scripts/DatabaseSchemaDirective.js"></script>
+    <script>
+        sqlConfidenceApp.factory('boostrappedData', function () {
+            return {
+                dataSource: @Html.Raw(ViewBag.DataSource)
+            };
+        });
+        $(document).ready(function () {
+            codeMirror = CodeMirror.fromTextArea(document.getElementById("QueryText"),
+                {
+                    lineNumbers: true,
+                    matchBrackets: true,
+                    indentUnit: 4,
+                    mode: "text/x-mssql",
+                    extraKeys: { "Ctrl-Space": "autocomplete" },
+                    lineWrapping: true
+                });
+            $(document).foundation();
+        });
+    </script>
+}
+<div ng-controller="ExerciseListProjectCtrl" ng-app="sqlConfidenceApp">
+    <div class="row">
+        <div class="large-3 columns">
+            <div class="container">
+                <h2>Project Instructions</h2>
+                <div class="containerBody">
+                    <p>
+                        Projects give you the chance to try out your skills and see some real examples of where these skills can be used.
+                        In this project, you are going to implement the functionality for the exercise list page of this website.  
+                    </p>
+                    <p>
+                        As always, the preview functionality will be there so you can see what the output of your query is expected to look like.
+                        Only some of the columns in the database given will be needed, so it's up to you to decide which table you need to select from and
+                        which columns to select.
+                    </p>
+                    <p>
+                        The list should be ordered by exercise difficulty and then by the order column.
+                    </p>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Visual Output</h2>
+                <div class="containerBody">
+                    <p>
+                        Instead of everything just being about lists of data, we have designed these projects to have a visual front end to each of them.
+                        In this exercise, you will be able to see a mock up of the exercise list page and each time you update your query, you can see
+                        the contents of the list change.
+                    </p>
+                </div>
+            </div>
+            <database-schema tables="dataSource.Tables"></database-schema>
+        </div>
+        <div class="large-9 columns">
+            <div class="container">
+                <h2>SQL View</h2>
+                <div class="containerBody">
+                    <textarea id="QueryText"></textarea>
+                </div>
+                <div class="buttons-container" id="buttons-container">
+                    <a class="button" id="execute-button" ng-click="SubmitQuery()">EXECUTE</a>
+                    <a class="button call-to-action" id="submit-button" ng-click="CheckAnswer()">SUBMIT</a>
+                    <a class="button right-button" id="preview-button" ng-click="ShowAnswerPreview()">PREVIEW</a>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Query Results</h2>
+                <div class="containerBody">
+                    <div id="QueryResults"></div>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Webpage</h2>
+                <div class="containerBody">
+                    <div ng-repeat="row in queryResults.Rows">
+                        <h3>{{row.EX_NAME}}</h3>
+                        <p>{{row.EX_DESCRIPTION}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@using DataAccess.Models
+@{
+    ViewBag.Title = "New Multiple Choice Exercise";
+}
+
+@section JavascriptInHead
+{
+    <script src="~/Scripts/Admin/MultipleChoiceCtrl.js"></script>
+    <script src="~/Scripts/Admin/MultipleChoiceOptionDirective.js"></script>
+}
+
+<div class="row" ng-app="sqlConfidenceApp" ng-controller="MultipleChoiceCtrl">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>New Multiple Choice Exercise</h2>
+            <div class="containerBody">
+                <form method="post">
+                    <table>
+                        <tr>
+                            <td><label for="DataSource">Data Source</label></td>
+                            <td>
+                                <select name="DataSourceId" ng-model="exercise.DataSourceId">
+                                    @foreach (DataSource dataSource in @ViewBag.DataSources)
+                                    {
+                                        <option value="@dataSource.DataSourceId">@dataSource.Name</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="Name">Name</label></td>
+                            <td><input name="Name" ng-model="exercise.Name" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Summary">Summary</label></td>
+                            <td><input name="Summary" ng-model="exercise.Summary" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="SectionName">Section Name</label></td>
+                            <td><input name="SectionName" ng-model="exercise.SectionName" /></td>
+                        </tr>
+                    </table>
+                    <button ng-click="Save()">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

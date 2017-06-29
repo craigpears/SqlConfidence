@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlConfidence", "SqlConfidence\SqlConfidence.csproj", "{8033CAAB-58F0-4D32-9A42-92F981FCD2D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{4811A144-E283-4260-B355-0123EB9C069A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFiles", "DatabaseFiles\DatabaseFiles.csproj", "{417FF0F9-ACE1-4245-8EFE-B70BD3AA89F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{4E5643B1-0A00-4B0C-9EE1-A094A1D978E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{09927992-AC51-4342-B75E-9693936DE216}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{B57B7E35-FC4B-4328-863E-46A92A78566F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGenerators", "DataGenerators\DataGenerators.csproj", "{7E848299-BB6C-4CC3-A9D7-3C076F4CCBAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6AA7270D-27D3-4EE9-8300-EEF1DABF4CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTests", "SeleniumTests\SeleniumTests.csproj", "{F0AFEB45-0D3B-44C7-B21B-060650B345C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8033CAAB-58F0-4D32-9A42-92F981FCD2D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8033CAAB-58F0-4D32-9A42-92F981FCD2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8033CAAB-58F0-4D32-9A42-92F981FCD2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8033CAAB-58F0-4D32-9A42-92F981FCD2D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4811A144-E283-4260-B355-0123EB9C069A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4811A144-E283-4260-B355-0123EB9C069A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4811A144-E283-4260-B355-0123EB9C069A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4811A144-E283-4260-B355-0123EB9C069A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417FF0F9-ACE1-4245-8EFE-B70BD3AA89F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417FF0F9-ACE1-4245-8EFE-B70BD3AA89F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417FF0F9-ACE1-4245-8EFE-B70BD3AA89F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417FF0F9-ACE1-4245-8EFE-B70BD3AA89F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5643B1-0A00-4B0C-9EE1-A094A1D978E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5643B1-0A00-4B0C-9EE1-A094A1D978E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5643B1-0A00-4B0C-9EE1-A094A1D978E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5643B1-0A00-4B0C-9EE1-A094A1D978E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57B7E35-FC4B-4328-863E-46A92A78566F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57B7E35-FC4B-4328-863E-46A92A78566F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57B7E35-FC4B-4328-863E-46A92A78566F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57B7E35-FC4B-4328-863E-46A92A78566F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E848299-BB6C-4CC3-A9D7-3C076F4CCBAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E848299-BB6C-4CC3-A9D7-3C076F4CCBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E848299-BB6C-4CC3-A9D7-3C076F4CCBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E848299-BB6C-4CC3-A9D7-3C076F4CCBAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0AFEB45-0D3B-44C7-B21B-060650B345C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0AFEB45-0D3B-44C7-B21B-060650B345C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0AFEB45-0D3B-44C7-B21B-060650B345C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0AFEB45-0D3B-44C7-B21B-060650B345C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E5643B1-0A00-4B0C-9EE1-A094A1D978E3} = {6AA7270D-27D3-4EE9-8300-EEF1DABF4CCC}
+		{F0AFEB45-0D3B-44C7-B21B-060650B345C4} = {6AA7270D-27D3-4EE9-8300-EEF1DABF4CCC}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://217.8.255.168:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Common\\Common.csproj
+		SccProjectName1 = Common
+		SccLocalPath1 = Common
+		SccProjectUniqueName2 = DatabaseFiles\\DatabaseFiles.csproj
+		SccProjectName2 = DatabaseFiles
+		SccLocalPath2 = DatabaseFiles
+		SccProjectUniqueName3 = SqlConfidence\\SqlConfidence.csproj
+		SccProjectName3 = SqlConfidence
+		SccLocalPath3 = SqlConfidence
+		SccProjectUniqueName4 = UnitTests\\UnitTests.csproj
+		SccProjectTopLevelParentUniqueName4 = SqlConfidence.sln
+		SccProjectName4 = UnitTests
+		SccLocalPath4 = UnitTests
+		SccProjectUniqueName5 = DataAccess\\DataAccess.csproj
+		SccProjectName5 = DataAccess
+		SccLocalPath5 = DataAccess
+		SccProjectUniqueName6 = DataGenerators\\DataGenerators.csproj
+		SccProjectName6 = DataGenerators
+		SccLocalPath6 = DataGenerators
+		SccProjectUniqueName7 = SeleniumTests\\SeleniumTests.csproj
+		SccProjectTopLevelParentUniqueName7 = SqlConfidence.sln
+		SccProjectName7 = SeleniumTests
+		SccLocalPath7 = SeleniumTests
+	EndGlobalSection
+EndGlobal

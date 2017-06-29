@@ -1,0 +1,14 @@
+﻿<template>    
+    <div class="query-exercise-page">
+        <require from="components/sql-code-editor"></require>
+
+        <div class="container">
+            <h2>${exercise.name}</h2>
+            <h2>${currentQuestion.description}</h2>
+            <div class="containerBody" class.bind="runAnimation ? 'animate' : ''">
+                <div innerhtml="${currentQuestion.instructions}"></div>
+                <sql-code-editor></sql-code-editor>
+            </div>
+        </div>
+    </div>
+</template>

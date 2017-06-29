@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Common.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SmtpHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">217.8.255.168</Value>
+    </Setting>
+    <Setting Name="ResetTokenLifetimeHours" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">48</Value>
+    </Setting>
+    <Setting Name="DatabaseDataSourcesConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">server=(local)\SQLEXPRESS;Trusted_Connection=yes; database=SqlConfidenceData; connection timeout=10;</Value>
+    </Setting>
+    <Setting Name="DatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">server=(local)\SQLEXPRESS;Trusted_Connection=yes; database=SqlConfidenceBranch; connection timeout=10; </Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

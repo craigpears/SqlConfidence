@@ -1,0 +1,46 @@
+﻿@using DataAccess.Models
+@{
+    ViewBag.Title = "DataSync";
+}
+
+<h2>DataSync</h2>
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Exercises</h2>
+            <div class="containerBody">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ExerciseId</th>
+                            <th>Name</th>
+                            <th>Summary</th>
+                            <th>Data Source</th>
+                            <th>Questions</th>
+                            <th>Section Name</th>
+                            <th>Published</th>
+                            <th>Updated/Created Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Exercise exercise in ViewBag.Exercises)
+                        {
+                            <tr>
+                                <td>@exercise.ExerciseId</td>
+                                <td>@exercise.Name</td>
+                                <td>@exercise.Summary</td>
+                                <td>@exercise.DataSource.Name</td>
+                                <td>@exercise.ExerciseQuestions.Count()</td>
+                                <td>@exercise.SectionName</td>
+                                <td>@exercise.Published</td>
+                                <td>@(exercise.UpdatedDate ?? exercise.CreatedDate)</td>
+                                <td><button type="button" onclick="PutExerciseToServer('@exercise.ExerciseId')">Put to server</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

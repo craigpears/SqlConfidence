@@ -1,0 +1,47 @@
+﻿@model System.Collections.Generic.List<DataAccess.Models.Exercise>
+@using DataAccess.Models
+
+@{
+    ViewBag.Title = "Exercises";
+}
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Exercises</h2>
+            <div class="containerBody">
+                <a class="button call-to-action" href="/Admin/NewExercise">New Exercise</a>
+                <a class="button call-to-action" href="/Admin/NewMultipleChoiceExercise">New Multiple Choice Exercise</a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ExerciseId</th>
+                            <th>Name</th>
+                            <th>Summary</th>
+                            <th>Data Source</th>
+                            <th>Questions</th>
+                            <th>Section Name</th>
+                            <th>Published</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Exercise exercise in @Model)
+                        {
+                            <tr>
+                                <td><a class="button" href="/Admin/Exercise?ExerciseId=@exercise.ExerciseId">Edit</a></td>
+                                <td>@exercise.ExerciseId</td>
+                                <td>@exercise.Name</td>
+                                <td>@exercise.Summary</td>
+                                <td>@exercise.DataSource.Name</td>
+                                <td>@exercise.ExerciseQuestions.Count()</td>
+                                <td>@exercise.SectionName</td>
+                                <td>@exercise.Published</td>
+                            </tr>   
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

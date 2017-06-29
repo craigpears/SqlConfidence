@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container small-container">
+    <div class="containerBody">
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { id = "registration-form" }))
+        {
+            <input data-required="true" type="text" name="UserData.FirstName" placeholder="First Name"/>
+            <input data-required="true" type="text" name="UserData.LastName" placeholder="Last Name"/>
+            <input data-required="true" type="text" name="UserData.Email" placeholder="Email"/>
+            <input data-required="true" type="password" name="PlainPassword" placeholder="Password"/>
+            <input data-required="true" type="password" name="PlainPasswordConfirm" placeholder="Confirm Password"/>
+            @Html.ActionLink("Terms and Conditions", "TermsAndConditions", "Home")<br />
+            @Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Home")<br />
+            <span>I agree to the privacy policy and terms and conditions</span>
+            <input type="checkbox" name="AgreeConditions" id="AgreeConditions"/>
+            <a class="button call-to-action wide-button" onclick="SubmitForm('registration-form', ValidateRegistrationForm)">Sign Up</a>
+        }
+    </div>
+</div>

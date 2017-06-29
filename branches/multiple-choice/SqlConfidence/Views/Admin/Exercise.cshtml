@@ -1,0 +1,89 @@
+﻿@model Common.Models.ExerciseModel
+@using Common.Models
+@{
+    ViewBag.Title = "Exercise";
+}
+
+<input type="hidden" id="ExerciseId" value="@Model.ExerciseId"/>
+
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button call-to-action" href="/Admin/Exercises">Exercises</a>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Exercise</h2>
+            <div class="containerBody">
+                <form method="post">
+                    <table>
+                        <tr>
+                            <td><label for="DataSource">Data Source</label></td>
+                            <td>
+                                <select name="DataSourceId" id="DataSourceId">
+                                    @foreach (DataSourceModel dataSource in @ViewBag.DataSources)
+                                    {
+                                        <option @if(Model.DataSourceId == dataSource.DataSourceId) {<text>selected="true"</text>} value="@dataSource.DataSourceId">@dataSource.Name</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="Name">Name</label></td>
+                            <td><input name="Name" id="Name" value="@Model.Name" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Summary">Summary</label></td>
+                            <td><input name="Summary" id="Summary" value="@Model.Summary"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Description">Description</label></td>
+                            <td><input name="Description" id="Description" value="@Model.Description"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Published">Published</label></td>
+                            <td><input disabled="disabled" type="checkbox" name="Published" id="Published" checked="@Model.Published"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="PublishedDate">Published Date</label></td>
+                            <td><input readonly="readonly" name="PublishedDate" id="PublishedDate" value="@Model.PublishedDate" /></td>
+                        </tr>                        
+                        <tr>
+                            <td><label for="SectionName">Section Name</label></td>
+                            <td><input name="SectionName" id="SectionName" value="@Model.SectionName" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ShowQueryBuilder">Show Query Builder</label></td>
+                            <td>
+                                Yes: <input type="radio" name="ShowQueryBuilder" id="ShowQueryBuilderTrue" value="true" @if (Model.ShowQueryBuilder) { <text>checked="true"</text>} />
+                                No: <input type="radio" name="ShowQueryBuilder" id="ShowQueryBuilderFalse" value="false" @if (!Model.ShowQueryBuilder) { <text> checked="true" </text>  } />
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="Order">Order</label></td>
+                            <td><input readonly="readonly" name="Order" id="Order" value="@Model.Order"/></td>
+                        </tr>
+                    </table>
+                    <button type="submit">Save</button>
+                    <button type="button" onclick="PublishExercise(@Model.ExerciseId)">Publish</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Questions</h2>
+            <div class="containerBody">
+                <div id="questions-sublist" class="sublist">
+                    @Html.Partial("Questions", Model)
+                </div>
+                <a href="/Admin/Question/?ExerciseId=@Model.ExerciseId" class="button call-to-action">New</a>
+            </div>
+        </div>
+    </div>
+</div>

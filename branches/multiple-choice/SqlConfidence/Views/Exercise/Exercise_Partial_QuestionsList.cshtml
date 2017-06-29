@@ -1,0 +1,9 @@
+﻿@using Common.Models    
+<h2>Questions <span class="questions-list-progress">({{(questions | answeredQuestions).length}} / {{questions.length}})</span></h2>
+<div class="containerBody">
+    <ul>
+        <li ng-repeat="question in questions" class="question-container">
+            <span ng-click="SelectQuestion(question)" class="question-link" ng-class="{answered: question.Answered}">{{question.Order + 1}}.{{question.Description}}</span>
+        </li>
+    </ul>
+</div>

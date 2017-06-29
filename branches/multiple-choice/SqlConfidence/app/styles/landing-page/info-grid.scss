@@ -1,0 +1,69 @@
+.lp-index {
+    .info-grid {
+        display: flex;
+        
+        @include mobile{
+            display: block;
+        }
+
+        .info-grid-cell {
+            background-color: $sherpa-blue;
+            color:white;
+            text-align:center;
+            font-size: 175%;
+            padding:50px;
+            width: 33.33%;
+
+            &:hover {
+                background-color: lighten($sherpa-blue, 10%)
+            }
+
+            @include mobile{
+            padding: 5px 10px;
+            font-size: 120%;
+        }
+
+            a {
+                color: white;
+            }            
+
+            .cell-header {
+                font-weight: bold;
+                font-size: 175%;
+                margin-bottom: 10px;
+            }
+
+            .ul.square{
+                list-style-type: square;
+                list-style-position: inside;
+            }
+
+            &.info-list-cell {                
+                text-align:left;
+                padding:50px 20px 50px 90px;
+
+                a {                    
+                    font-style: italic;
+                    font-size: 14px;
+                }
+            }
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+
+        .logo-center-grid{
+            background-color:transparent;
+            display: block;
+            margin: auto;
+            padding-top:20px;
+        }
+        .star-left {
+            position: absolute;
+            left:65px;
+            padding-left: 10px;
+        }
+
+    }
+}

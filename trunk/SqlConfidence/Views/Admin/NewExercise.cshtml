@@ -1,0 +1,54 @@
+﻿@using Common.Models
+
+@{
+    ViewBag.Title = "NewExercise";
+}
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>New Exercise</h2>
+            <div class="containerBody">
+                <form method="post">
+                    <table>
+                        <tr>
+                            <td><label for="DataSource">Data Source</label></td>
+                            <td>
+                                <select name="DataSourceId" id="DataSourceId">
+                                    @foreach (DataSourceModel dataSource in @ViewBag.DataSources)
+                                    {
+                                        <option value="@dataSource.DataSourceId">@dataSource.Name</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="Name">Name</label></td>
+                            <td><input name="Name" id="Name" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Summary">Summary</label></td>
+                            <td><input name="Summary" id="Summary" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Description">Description</label></td>
+                            <td><input name="Description" id="Description" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ShowQueryBuilder">Show Query Builder</label></td>
+                            <td>
+                                Yes: <input type="radio" name="ShowQueryBuilder" id="ShowQueryBuilder" value="true" checked />
+                                No: <input type="radio" name="ShowQueryBuilder" id="ShowQueryBuilder" value="false" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="SectionName">Section Name</label></td>
+                            <td><input name="SectionName" id="SectionName" value=" " /></td>
+                        </tr>
+                    </table>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

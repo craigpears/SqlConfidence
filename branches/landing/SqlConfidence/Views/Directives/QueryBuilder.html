@@ -1,0 +1,31 @@
+﻿<table>
+    <tr>
+        <td></td>
+        <td ng-repeat="column in table.Columns">{{column.Name}}</td>
+    </tr>
+    <tr>
+        <td>SELECT</td>
+        <td ng-repeat="column in table.Columns"><input type="checkbox" ng-model="column.Selected" /></td>
+    </tr>
+    <tr>
+        <td>WHERE</td>
+        <td ng-repeat="column in table.Columns">
+            <select ng-model="column.Where" ng-options="option.label for option in column.QueryBuilderColumnOptions"></select>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td ng-repeat="column in table.Columns"><input type="text" ng-model="column.Filter" /></td>
+    </tr>
+</table>
+<div>
+    ORDER BY
+    <select id="OrderColumn" ng-model="OrderColumn">
+        <option>None</option>
+        <option ng-repeat="column in table.Columns">{{column.Name}}</option>
+    </select>
+    <select id="OrderDirection" ng-model="OrderDirection">
+        <option value="ASC">Ascending</option>
+        <option value="DESC">Descending</option>
+    </select>
+</div>

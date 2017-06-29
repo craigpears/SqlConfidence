@@ -1,0 +1,22 @@
+﻿#success_bar, #error_bar {
+    display: none;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+#success_bar {
+    background-color: #43AC6A;
+    border-color: #3a945b;
+}
+
+#error_bar {
+    background-color: #f04124;
+    border-color: #cf280e;
+}

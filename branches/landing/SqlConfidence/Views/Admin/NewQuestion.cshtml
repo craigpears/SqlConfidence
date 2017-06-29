@@ -1,0 +1,45 @@
+﻿@model Common.Models.ExerciseModel
+@{
+    ViewBag.Title = "NewQuestion";
+}
+
+<div ng-app="sqlConfidenceApp">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="container">
+                <h2>New Question</h2>
+                <div class="containerBody">
+                    <form method="post">
+                        <input type="hidden" name="ExerciseId" id="ExerciseId" value="@Model.ExerciseId" />
+                        <table>
+                            <tr>
+                                <td><label for="Description">Description</label></td>
+                                <td><input name="Description" id="Description" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Instructions">Instructions</label></td>
+                                <td><input name="Instructions" id="Instructions" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="AnswerTemplate">AnswerTemplate</label></td>
+                                <td>
+                                    <input name="AnswerTemplate" id="AnswerTemplate" />
+                                    <create-yes-no-answer target-input-id="AnswerTemplate"></create-yes-no-answer>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="Hint">Hint</label></td>
+                                <td><input name="Hint" id="Hint" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="StartingSql">Starting SQL</label></td>
+                                <td><input name="StartingSql" id="StartingSql" /></td>
+                            </tr>
+                        </table>
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

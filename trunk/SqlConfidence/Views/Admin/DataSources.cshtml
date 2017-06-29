@@ -1,0 +1,38 @@
+﻿@model System.Collections.Generic.IEnumerable<Common.Models.DataSourceModel>
+@using Common.Models
+@{
+    ViewBag.Title = "DataSources";
+}
+
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Data Sources</h2>
+            <div class="containerBody">
+                <a class="button call-to-action" href="/Admin/NewDataSource">New Data Source</a>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Data Source Id</th>
+                            <th>Name</th>
+                            <th>Tables</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataSourceModel dataSource in Model)
+                        {
+                            <tr>
+                                <td><a class="button" href="/Admin/DataSource?DataSourceId=@dataSource.DataSourceId">Edit</a></td>
+                                <td>@dataSource.DataSourceId</td>
+                                <td>@dataSource.Name</td>
+                                <td>@dataSource.Tables.Count()</td>
+                            </tr>   
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿<template>
+    <p>Here are the query results!</p>
+    <p>${sqlquery}</p>
+    <table>
+        <tr>
+            <th repeat.for="header of resultsData.columnHeaders">${header}</th>
+        </tr>
+        <tr repeat.for="row of resultsData.data">
+            <td repeat.for="cell of row">${cell}</td>
+        </tr>
+    </table>
+</template>

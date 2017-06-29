@@ -1,0 +1,38 @@
+﻿
+header {
+    background-color: #002026;
+    border-bottom: 1px solid grey;
+    color: white;    
+    line-height: 25px;
+}
+
+#header-inner {
+    max-width: 1500px;
+    margin: auto;
+}
+
+#logo {
+    font-size: 140%;
+}
+
+nav {
+    text-align: center;
+}
+
+header a {
+    display: inline !important;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+header a:hover {
+    background-color: #002B33;
+    color: white;
+}
+
+#login {
+    float: right;
+}

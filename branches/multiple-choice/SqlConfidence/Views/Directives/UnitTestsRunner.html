@@ -1,0 +1,5 @@
+﻿<h2>Tests</h2>
+<div ng-repeat="test in tests" ng-class="{'test-passed': test.Passed == true, 'test-failed': test.Passed == false}">
+    <span>Name: {{test.Name}}</span>
+    <span>Description: {{test.Description}}</span>
+</div>

@@ -1,0 +1,1 @@
+﻿var sqlConfidenceApp = angular.module('sqlConfidenceApp', ['ngSanitize']);

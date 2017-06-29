@@ -1,0 +1,86 @@
+﻿@model DataAccess.Models.DataSource
+@using DataAccess.Models
+@using Common.Models
+@{
+    ViewBag.Title = "Data Source";
+}
+
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button call-to-action" href="/Admin/DataSources">Data Sources</a>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Data Source</h2>
+            <div class="containerBody">
+                <form method="post">
+                    <input type="hidden" id="DataSourceId" name="DataSourceId" value="@Model.DataSourceId" />
+                    <input type="hidden" id="DataSourceIdGuid" name="DataSourceIdGuid" value="@Model.DataSourceIdGuid" />
+                    <table>
+                        <tr>
+                            <td><label for="Name">Name</label></td>
+                            <td><input name="Name" id="Name" value="@Model.Name" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="CreatedDate">Created Date</label></td>
+                            <td><input readonly name="CreatedDate" id="CreatedDate" value="@Model.CreatedDate" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="CreatedBy">Created By</label></td>
+                            <td><input readonly name="CreatedBy" id="CreatedBy" value="@Model.CreatedBy" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="UpdatedDate">Updated Date</label></td>
+                            <td><input readonly name="UpdatedDate" id="UpdatedDate" value="@Model.UpdatedDate" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="UpdatedBy">Updated By</label></td>
+                            <td><input readonly name="UpdatedBy" id="UpdatedBy" value="@Model.UpdatedBy" /></td>
+                        </tr>
+                    </table>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <div class="container">
+            <h2>Tables</h2>
+            <div class="containerBody">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table Name</th>
+                            <th>Columns</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    @foreach (TableModel table in @ViewBag.Tables)
+                    {
+                        <tr>
+                            <td>@table.TableName</td>
+                            <td>
+                                @foreach (var column in table.Columns)
+                                {
+                                    @column.Name <text>(</text>@column.Type<text>),</text>
+                                }
+                            </td>
+                            <td>
+                                @if (!Model.DataSourceTables.Any(x => x.TableName == table.TableName))
+                                {
+                                    <button type="button" id="add_table_@table.TableName" onclick="AddDataSourceTable('@table.TableName', '@Model.DataSourceId')">Add</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

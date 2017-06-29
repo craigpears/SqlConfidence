@@ -1,0 +1,8 @@
+﻿<table>
+    <tr>
+        <th ng-repeat="header in headers">{{header}}</th>
+    </tr>
+    <tr ng-repeat="row in rows">
+        <td ng-repeat="header in headers">{{row[header.toUpperCase()]}}</td>
+    </tr>
+</table>

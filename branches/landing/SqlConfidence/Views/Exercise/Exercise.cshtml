@@ -1,0 +1,105 @@
+﻿@model string
+@using System.Data
+@using Common.Models
+@{
+    ViewBag.Title = "Exercise";
+    ViewBag.DarkSkin = true;
+}
+
+@section JavascriptInHead
+{    
+    <script src="~/Scripts/Exercises/ExerciseCtrl.js"></script>
+    <script src="~/Scripts/Exercises/QuestionsFilters.js"></script>
+    <script src="~/Scripts/Exercises/CollapsibleDirective.js"></script>
+    <script src="~/Scripts/Exercises/DatabaseSchemaDirective.js"></script>
+    <script src="~/Scripts/Exercises/UnitTestsRunnerDirective.js"></script>
+    <script src="~/Scripts/Exercises/QueryResultsView/QueryResultsViewDirective.js"></script>
+    <script src="~/Scripts/Exercises/QueryBuilder/QueryBuilderDirective.js"></script>
+
+    <script>
+
+        sqlConfidenceApp.factory('boostrappedExerciseData', function () {
+            return {
+                exercise: @Html.Raw(Model)
+            };
+        });
+        $(document).ready(function () {
+            correctAnswers = 0;
+            $(document).foundation();
+        });
+    </script>
+}
+<div ng-controller="ExerciseCtrl as ctrl" ng-app="sqlConfidenceApp">
+<div class="row">
+    <div class="large-3 columns">
+        <div class="container">
+            <h2>{{GetInstructionsTitle()}}</h2>
+            <div class="containerBody" id="current-instruction" ng-bind-html="currentQuestion.InstructionsTemplate"></div>
+        </div>
+        <div class="container">
+            <h2>Need help? Get a hint!</h2>
+            <div class="containerBody solid-body">
+                <div class="prominent-button" ng-click="ToggleShowHint()">Hint</div>
+                <div class="prominent-box" ng-show="showHint">{{GetHint()}}</div>
+                <div class="prominent-button" ng-click="ToggleShowSolution()">Solution</div>
+                <div class="prominent-box" ng-show="showSolution">{{GetSolution()}}</div>
+            </div>
+        </div>       
+    </div>
+    <div class="large-9 columns">
+        <div class="container"  ng-hide="showingPreview">
+            <h2>{{exercise.Name}}</h2>
+            <div class="buttons-container orange-bar">
+                <a class="button" ng-show="tab == 'Query Builder'" ng-click="queryBuilderControl.ClearQueryBuilder()">CLEAR</a>
+                <a class="button" ng-click="ExecuteQuery()">EXECUTE</a>
+
+                <a ng-show="QuestionIsUnitTested()" class="button" id="reset-button" ng-click="Reset(currentQuestion)">RESET</a>
+                <span ng-show="QuestionIsMultipleChoice()">
+                    <a class="button call-to-action" ng-repeat="choice in currentQuestion.ExerciseQuestionChoices" ng-click="CheckAnswerMultipleChoice(choice.Description, currentQuestion.ExerciseQuestionId)">{{choice.Description}}</a>
+                </span>
+                <a ng-show="QuestionIsQueryType()" class="button call-to-action" ng-click="CheckAnswer(currentQuestion.ExerciseQuestionId)">SUBMIT</a>
+                <a ng-show="QuestionIsUnitTested()" class="button call-to-action" ng-click="RunTests(currentQuestion)">SUBMIT</a>
+
+                <a class="button right-button" ng-click="ChangeRightTab('DatabaseSchema')">Database</a>
+                <a class="button right-button" ng-click="ChangeRightTab('QuestionsList')">Questions</a>
+                <a class="button right-button" ng-click="ChangeRightTab('UnitTests')" ng-show="QuestionIsUnitTested()">Tests</a>
+            </div>
+            <div class="containerBody" id="Query">
+                <div class="row">
+                    <div class="large-9 columns">
+                        <div id="QueryTextWrapper" ng-show="tab == 'SQL'">
+                            <textarea id="QueryText"></textarea>
+                        </div>
+                        <div id="QueryBuilder" ng-if="tab == 'Query Builder'">
+                           <query-builder table="GetTableForQueryBuilder()" control="queryBuilderControl"></query-builder>
+                        </div>
+                    </div>
+                    <div class="large-3 columns">
+                        <div class="exercise-right-tabs-container">
+                            <database-schema    ng-show="rightTab == 'DatabaseSchema'" tables="exercise.DataSource.DataSourceTables"></database-schema>
+                            <div                ng-show="rightTab == 'QuestionsList'">@Html.Partial("Exercise_Partial_QuestionsList")</div>
+                            <unit-tests-runner  ng-show="rightTab == 'UnitTests'" id="UnitTests" tests="currentQuestion.ExerciseQuestionUnitTests"></unit-tests-runner>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="NextQuestionContainer" ng-show="currentQuestion.Answered">
+            <div class="containerBody">
+                <a class="button call-to-action" ng-click="NextQuestion()">Next Question</a>
+            </div>
+        </div>
+        <div class="container" id="QueryResultsContainer" ng-show="!currentQuestion.Answered">
+            <div class="query-results-bar">
+                <h2>Query Results (top 100)</h2>
+                <a ng-show="currentQuestion.ExerciseQuestionType != 1" class="button right-button" id="preview-button" ng-click="ShowAnswerPreview(currentQuestion.ExerciseQuestionId)">Query Preview</a>
+                <div class="clear"></div>
+            </div>
+            <p ng-show="showingPreview">The below is a preview of what the query for this question should return. <a class="button call-to-action" id="run-tests-button" ng-click="HidePreview()">Got It</a></p>
+            <div id="QueryResults"></div>
+            <query-results-view headers="headers" rows="rows" />
+        </div>
+    </div>
+    
+</div>
+</div>

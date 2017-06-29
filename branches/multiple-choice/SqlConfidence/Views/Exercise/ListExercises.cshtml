@@ -1,0 +1,31 @@
+﻿@model System.Collections.Generic.IEnumerable<DataAccess.Models.Exercise>
+@using DataAccess.Models
+@{
+    ViewBag.Title = "ListExercises";
+}
+
+<div class="row">
+    <div class="container columns large-12">
+    <h2>Exercises</h2>
+        <div class="containerBody">
+        @{string sectionName = "";}
+        @foreach (Exercise exercise in @Model)
+        {
+            if (exercise.SectionName.Trim() != sectionName.Trim())
+            {
+                sectionName = exercise.SectionName;
+                <h3>@sectionName</h3>
+            }
+            <div class="exerciseContainer row" onclick="OpenExercise(@exercise.ExerciseId);">
+                <div class="columns large-10" id="exerciseSummaryDescription">
+                    <p class="exerciseSummary">@exercise.Name</p>
+                    <p class="exerciseDescription">@exercise.Summary</p>
+                </div>
+                <div class="columns large-2">
+                    <p class="exerciseProgress">Progress: @exercise.ExerciseQuestions.Where(x => x.Answered == true).Count() / @exercise.ExerciseQuestions.Count()</p>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</div>

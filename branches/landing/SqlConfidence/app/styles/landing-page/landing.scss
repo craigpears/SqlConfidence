@@ -1,0 +1,158 @@
+﻿.lp-index {
+	.landing {
+	    width: 100%;
+	    height: auto;
+	}
+	
+	p {
+	    font-size: 1.5rem;
+	}
+
+	.columns {
+	    padding: 0;
+	}
+    
+	.body-landing{
+		background: white;
+	}
+
+    .button-land {
+        background-color: $outrageous-orange;
+        border-bottom: 2px solid lighten($outrageous-orange, 20%);
+        color: white;
+        padding: 15px 35px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 175%;
+        margin: 4px 2px;
+        cursor: pointer;
+        display: block;
+        position: absolute; 
+        left: 60%; 
+        top: 60%;
+
+        &:hover {
+            background-color: darken($outrageous-orange, 10%);
+            color: white;
+            border-bottom: 2px solid darken($outrageous-orange, 10%);
+        }
+
+        @include mobile{
+            padding: 5px 10px;
+            font-size: 100%;
+        }
+    }
+
+    .manifesto-row {
+        text-align: center;
+        padding: 40px 0;
+
+        #manifesto-image {
+            width: 900px;
+        }
+    }
+
+
+
+    .intro-video-row {
+        text-align: center;
+        width: 50%;
+        padding: 30px;
+    }
+
+    .videoWrapper{
+    	position: relative;
+    	padding-bottom: 56.25%; /* 16:9 */
+    	padding-top: 35px;
+    	height: 0;
+    	overflow: hidden;
+    }
+
+    .videoWrapper iframe {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+    .divider-row {
+        background-color: $emerald;
+        text-align:center;
+        font-size:300%;
+        color: white;
+
+        .divider-contents {
+            padding: 15px;
+        }
+
+		 @include mobile{
+            padding: 5px 10px;
+            font-size: 120%;
+        }
+    }
+
+    .divider-row-orange {
+        background-color: $outrageous-orange;
+        text-align:center;
+        font-size:300%;
+        color: white;
+
+        .divider-contents {
+            padding: 15px;
+        }
+
+		 @include mobile{
+            padding: 5px 10px;
+            font-size: 120%;
+        }
+    }
+
+    .divider-row-blue {
+        background-color: $shakespeare-blue;
+        text-align:center;
+        font-size:300%;
+        color: white;
+
+        .divider-contents {
+            padding: 15px;
+        }
+
+		 @include mobile{
+            padding: 5px 10px;
+            font-size: 120%;
+        }
+    }
+
+     .divider-row-sherpa {
+        background-color: $sherpa-blue;
+        text-align:center;
+        font-size:300%;
+        color: white;
+
+        .divider-contents {
+            padding: 10px;
+        }
+
+        .logo{
+        text-align:  center;
+        
+        }
+    }
+
+    .social-media-links {
+        display: flex;
+        margin-top: 40px;
+
+        a {
+            width: 33.33%;
+            display: block;
+            padding: 10px;
+            
+            img {                
+                height: 60px;
+            }
+        }
+    }
+
+}

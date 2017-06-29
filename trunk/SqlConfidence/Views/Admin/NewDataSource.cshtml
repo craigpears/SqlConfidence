@@ -1,0 +1,36 @@
+﻿@using DataAccess.Models
+
+@{
+    ViewBag.Title = "New Data Source";
+}
+
+<div class="row">
+    <div class="large-12 columns">
+        <form method="post">
+            <div class="container">
+                <h2>New Data Source</h2>
+                <div class="containerBody">
+                    <table>
+                        <tr>
+                            <td><label for="Name">Data Source Name</label></td>
+                            <td><input name="Name" id="Name" /></td>
+                        </tr>
+                    </table>
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+            @*<div class="container">
+                <h2>Data Source Tables</h2>
+                <div class="containerBody">
+                    <table>
+                        <tr>
+                            <td><label for="TableName">Table Name</label></td>
+                            <td><input name="TableName" id="TableName" /></td>
+                        </tr>
+                    </table>
+                    <button type="submit">Save</button>
+                </div>
+            </div>*@
+        </form>
+    </div>
+</div>

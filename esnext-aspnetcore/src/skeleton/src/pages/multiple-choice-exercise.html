@@ -1,0 +1,25 @@
+﻿<template>    
+    <div class="multiple-choice-page">
+        <require from="components/query-results"></require>
+        <require from="components/scmodal"></require>
+
+        <div class="container">
+            <h2>${exercise.name}</h2>
+            <h2>${currentQuestion.description}</h2>
+            <div class="containerBody" class.bind="runAnimation ? 'animate' : ''">
+                <div innerhtml="${currentQuestion.instructions}"></div>
+                <div repeat.for="query of currentQuestion.dataQueries">
+                    <query-results sqlquery="${query.sqlQuery}"></query-results>
+                </div>
+                <div>
+                    <div repeat.for="option of currentQuestion.options">
+                        <div click.delegate="checkAnswer(option)">${option.description}</div>
+                    </div>
+                </div>
+                <div>
+                    <sc-modal message="${modalMessage}" active.one-way="modalActive" oncontinue.call="continueClicked()"></sc-modal>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

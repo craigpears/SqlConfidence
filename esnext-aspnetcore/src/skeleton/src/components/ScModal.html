@@ -1,0 +1,13 @@
+﻿<template>
+    <div class="sc-modal" class.bind="active ? 'active' : ''">
+        <div class="sc-modal-header">
+            Message
+        </div>
+        <div class="sc-modal-body">
+            ${message}
+        </div>
+        <div class="sc-modal-actions">
+            <a class="button call-to-action" click.delegate="oncontinue()">Continue</a>
+        </div>
+    </div>    
+</template>

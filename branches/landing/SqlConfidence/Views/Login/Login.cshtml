@@ -1,0 +1,16 @@
+﻿@model Common.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container small-container">
+<div class="containerBody">
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { id = "log-in-form" }))
+    {
+        <input data-required="true" id="UserData_Email" name="UserData.Email" placeholder="Email" type="text" value="">
+        <input data-required="true" id="PlainPassword" name="PlainPassword" placeholder="Password" type="password">
+        <a class="button call-to-action wide-button" onclick="SubmitForm('log-in-form', ValidateLoginForm)">Log In</a>
+        
+    }
+</div>
+</div>

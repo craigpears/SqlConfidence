@@ -1,0 +1,16 @@
+#QueryBuilder {
+    overflow: auto;
+}
+
+#QueryBuilder input {
+    width: auto;
+}
+
+#QueryBuilder input[type=checkbox]
+{
+    width: 20px;
+}
+
+#QueryBuilder tr td:first-child {
+    width: 50px;
+}

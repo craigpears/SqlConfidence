@@ -1,0 +1,6 @@
+C:\SqlConfidence\trunk\DataGenerators\bin\Debug\DataGenerators.dll
+C:\SqlConfidence\trunk\DataGenerators\bin\Debug\DataGenerators.pdb
+C:\SqlConfidence\trunk\DataGenerators\bin\Debug\RedGate.SQLCompare.Engine.dll
+C:\SqlConfidence\trunk\DataGenerators\bin\Debug\RedGate.SQLDataGenerator.Engine.dll
+C:\SqlConfidence\trunk\DataGenerators\obj\Debug\DataGenerators.dll
+C:\SqlConfidence\trunk\DataGenerators\obj\Debug\DataGenerators.pdb

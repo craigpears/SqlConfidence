@@ -1,0 +1,16 @@
+.multiple-choice-page {
+    .animate {
+        animation: slideleft 0.3s ease-in;
+    }
+    
+    @keyframes slideleft {
+      0% {
+        transform: translate(-200px, 0);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+}

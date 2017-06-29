@@ -1,0 +1,24 @@
+﻿<h2>Database</h2>
+<div class="table-tree" ng-repeat="table in tables">
+    <div class="table-tree-label" ng-click="ToggleTableTreeContents(table)">[{{GetPlusMinus(table)}}] {{table.TableAlias}}</div>
+    <div class="table-tree-contents" ng-show="GetShowData(table.DataSourceTableId).showTable" collapsible>
+        <div class="folder" id="folder0">
+            <div class="folder-contents" ng-show="GetShowData(table.DataSourceTableId).showColumns">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column Name</th>
+                            <th>Column Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="column in table.Columns">
+                            <td>{{column.Name}}</td>
+                            <td>{{column.Type}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

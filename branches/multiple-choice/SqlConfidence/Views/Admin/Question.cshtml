@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Question";
+}
+
+@section JavascriptInHead
+{
+    <script src="~/Scripts/Admin/Questions/AdminQuestionCtrl.js"></script>
+    <script src="~/Scripts/Admin/Questions/MultipleChoiceInputDirective.js"></script>
+    <script src="~/Scripts/Admin/Questions/UnitTestsListDirective.js"></script>
+    <script src="~/Scripts/lib/ng-ckeditor/ng-ckeditor.js"></script>
+    <script>
+        sqlConfidenceApp.factory('bootstrappedData', function () {
+            return {
+                data: @Html.Raw(Model)
+                };
+        });
+    </script>
+}
+
+<div ng-app="sqlConfidenceApp" ng-controller="AdminQuestionCtrl">
+    <div class="row">
+        <div class="large-12 columns">
+            <a class="button call-to-action" href="{{exerciseHref}}">Exercise</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="container">
+                <h2>Question</h2>
+                <div class="containerBody">
+                    <form method="post" action="/Admin/Question">
+                        <table>
+                            <tr>
+                                <td><label for="Description">Description</label></td>
+                                <td><input name="Description" id="Description" ng-model="data.Description" ng-required/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Instructions">Instructions</label></td>
+                                <td><textarea ckeditor="editorOptions" name="Instructions" id="Instructions" ng-model="data.InstructionsTemplate" ng-required></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><label for="ExerciseQuestionType">Exercise Question Type</label></td>
+                                <td>
+                                    <select name="ExerciseQuestionType" id="ExerciseQuestionType" ng-model="data.ExerciseQuestionType">
+                                        @{var enumArray = Enum.GetValues(typeof(DataAccess.Enums.ExerciseQuestionType));}
+                                        @{int i = 0;}
+                                        @foreach (var enumItem in enumArray)
+                                        {
+                                            <option value="@i">@enumItem</option>
+                                            i++;
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="AnswerTemplate">AnswerTemplate</label></td>
+                                <td>
+                                    <textarea ng-show="data.ExerciseQuestionType == 0" name="AnswerTemplate" id="AnswerTemplate" ng-model="data.AnswerTemplate"></textarea>
+                                    <multiple-choice-input ng-show="data.ExerciseQuestionType == 1" answer="data.AnswerTemplate" choices="data.ExerciseQuestionChoices"></multiple-choice-input>
+                                    <unit-tests-list ng-show="data.ExerciseQuestionType == 2" tests="data.ExerciseQuestionUnitTests"></unit-tests-list>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="Hint">Hint</label></td>
+                                <td><textarea name="Hint" id="Hint" ng-model="data.Hint" ></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><label for="StartingSql">Starting SQL</label></td>
+                                <td><textarea name="StartingSql" id="StartingSql" ng-model="data.StartingSql" ></textarea></td>
+                            </tr>
+                        </table>
+                        <button type="button" ng-click="SaveQuestion()">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
